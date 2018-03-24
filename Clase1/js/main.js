@@ -7,6 +7,7 @@ window.onload = function(){
 			}
 			);
 	var pet, apple, candy, rubber_duck, rotate,
+		is_complete = false,
 		item_clicked = "", 
 		clone,
 		elements = [];
@@ -60,26 +61,43 @@ window.onload = function(){
 	}
 
 	function clickBackyard(sprite,event){
-		if(item_clicked != ""){
+		//!tween.isRunning
+		if(item_clicked != "" && !is_complete){
+			is_complete = true;
 			clone = game.add.sprite(event.position.x,
 										event.position.y,
 										item_clicked);
 			clone.anchor.setTo(0.5);
 			var tween = game.add.tween(pet).
 							to({x:clone.x,y:clone.y});
-			tween.start();				
+			tween.start();		
+			tween.onComplete.add(tween_complete);
 
 			pet.bringToTop();
 		}
 	}
 
-	function clickObject(sprite){
-		item_clicked = sprite.key;
-		/*elements.forEach(function(element,index){
+	function tween_complete(){
+		is_complete = false;
+		clone.kill();
+		pet.animations.play("happy",12,false);
+	}
 
-		});*/
-		elements.forEach(changeAlpha);
-		sprite.alpha = 0.5;
+	function clickObject(sprite){
+		if(is_complete)return;
+		if(sprite.key ==  "rotate"){
+			is_complete = true;
+			var tween = game.add.tween(pet).to({angle:pet.angle+50},500);
+			tween.start();
+			tween.onComplete.add(function(){
+				is_complete = false;
+			});
+		}else{
+			item_clicked = sprite.key;
+			elements.forEach(changeAlpha);
+			sprite.alpha = 0.5;
+		}
+		
 	}
 
 	function changeAlpha(element,index){
