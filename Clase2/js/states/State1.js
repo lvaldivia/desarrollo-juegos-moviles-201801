@@ -1,6 +1,12 @@
 Preload = function(game){}
 Preload.prototype = {
 	preload:function(){
+		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		this.game.scale.pageAlignHorizontally = true;
+		this.game.scale.pageAlignVertically = true;
+		this.game.scale.maxWidth = 680;
+		this.game.scale.maxHeight = 960;
+
 		this.game.load.image('background','img/background.png');
 		this.game.load.image('title','img/title.png');
 		this.game.load.image('monster-cover','img/monster-cover.png');
