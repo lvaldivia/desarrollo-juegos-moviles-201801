@@ -12,8 +12,12 @@
 </head>
 <body>
 	<script type="text/javascript" src="js/lib/phaser.min.js"></script>
+	<script type="text/javascript" src="js/prefabs/Player.js?v=<?php echo date('YmdHis') ?>"></script>
+	<script type="text/javascript" src="js/prefabs/Enemy.js?v=<?php echo date('YmdHis') ?>"></script>
+	<script type="text/javascript" src="js/prefabs/Goal.js?v=<?php echo date('YmdHis') ?>"></script>
 	<script type="text/javascript" src="js/states/Preload.js?v=<?php echo date('YmdHis') ?>"></script>
 	<script type="text/javascript" src="js/states/Game.js?v=<?php echo date('YmdHis') ?>"></script>
+	<script type="text/javascript" src="js/utils.js?v=<?php echo date('YmdHis') ?>"></script>
 	<script type="text/javascript" src="js/main.js?v=<?php echo date('YmdHis') ?>"></script>
 </body>
 </html>

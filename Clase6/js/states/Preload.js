@@ -23,6 +23,12 @@ Preload.prototype = {
 		this.game.load.tilemap('demo-level',
 					"assets/levels/demo-level.json",
 					null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('level1',
+					"assets/levels/level1.json",
+					null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('level2',
+					"assets/levels/level2.json",
+					null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.image('gameTiles',
 				 'assets/images/tiles_spritesheet.png');
 
