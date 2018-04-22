@@ -27,38 +27,44 @@ Game.prototype = {
 		this.createControls();
 	},
 	createControls:function(){
-		leftButton = this.game.add.sprite(0,0,'arrowButton');
-		leftButton.y = this.game.height;
+		leftButton = this.game.add.sprite(30,0,'arrowButton');
+		leftButton.y = this.game.height - 60;
 		leftButton.inputEnabled = true;
-		//leftButton.fixedToCamera = true;
+		leftButton.fixedToCamera = true;
+		leftButton.alpha = 0.7;
 
-		rightButton = this.game.add.sprite(leftButton.width + 10
+		rightButton = this.game.add.sprite(leftButton.x 
+											+leftButton.width +80
 		                    ,0,'arrowButton');                              
-		rightButton.y = this.game.height;
+		rightButton.y = this.game.height - 60;
 		rightButton.inputEnabled = true;
+		rightButton.fixedToCamera = true;
+		rightButton.alpha = 0.7;
 
 		actionButton = this.game.add.sprite(0,0,'actionButton');
-		actionButton.y = this.game.height;
-		actionButton.x = 600;
+		actionButton.y = this.game.height -60;
+		actionButton.x = 500;
 		actionButton.inputEnabled = true;
+		actionButton.fixedToCamera = true;
+		actionButton.alpha = 0.7;
 		leftButton.events.onInputDown.add(function(){
-			
+			player.pressButton("left");
 		},this);
 		rightButton.events.onInputDown.add(function(){
-			
+			player.pressButton("right");
 		},this);
 		actionButton.events.onInputDown.add(function(){
-			
+			player.pressButton("up");
 		},this);
 
 		leftButton.events.onInputUp.add(function(){
-			
+			player.releaseButton("left");
 		},this);
 		rightButton.events.onInputUp.add(function(){
-			
+			player.releaseButton("right");
 		},this);
 		actionButton.events.onInputUp.add(function(){
-			
+			player.releaseButton("up");
 		},this);
 	},
 	createGoal:function(){
